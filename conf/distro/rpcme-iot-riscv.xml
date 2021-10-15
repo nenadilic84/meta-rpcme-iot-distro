@@ -7,6 +7,7 @@
   <remote name="clang" fetch="git://github.com/kraj" />
   <remote name="swupdate" fetch="git://github.com/sbabic" />
   <remote name="aws" fetch="git://github.com/aws" />
+  <remote name="rpcme" fetch="git://github.com/rpcme" />
   
   <project remote="oe"
            revision="e72c0b94554a9bc293844ec2bddb0c04ea19791d"
@@ -40,4 +41,8 @@
            revision="master"
            name="meta-aws"
            path="meta-aws" />
+  <project remote="rpcme"
+           revision="master"
+           name="meta-rpcme-iot-distro"
+           path="meta-rpcme-iot-distro" />
 </manifest>
