@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <default sync-j="4" />
+  <remote name="oe"     fetch="git://git.openembedded.org" />
+  <remote name="riscv" fetch="git://github.com/riscv" />
+  <remote name="sifive" fetch="git://github.com/sifive" />
+  <remote name="clang" fetch="git://github.com/kraj" />
+  <remote name="swupdate" fetch="git://github.com/sbabic" />
+  <remote name="aws" fetch="git://github.com/aws" />
+  
+  <project remote="oe"
+           revision="e72c0b94554a9bc293844ec2bddb0c04ea19791d"
+           name="openembedded-core"
+           path="openembedded-core" />
+  <project remote="oe"
+           revision="master"
+           name="meta-openembedded"
+           path="meta-openembedded" />
+  <project remote="riscv"
+           revision="master"
+           name="meta-riscv"
+           path="meta-riscv" />
+  <project remote="sifive"
+           revision="2021.09"
+           name="meta-sifive"
+           path="meta-sifive" />
+  <project remote="clang"
+           revision="master"
+           name="meta-clang"
+           path="meta-clang" />
+  <project remote="swupdate"
+           revision="master"
+           name="meta-swupdate"
+           path="meta-swupdate" />
+  <project remote="aws"
+           revision="master"
+           name="meta-aws"
+           path="meta-aws" />
+</manifest>
