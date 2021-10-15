@@ -42,7 +42,7 @@
            name="meta-aws"
            path="meta-aws" />
   <project remote="rpcme"
-           revision="master"
+           revision="main"
            name="meta-rpcme-iot-distro"
            path="meta-rpcme-iot-distro" />
 </manifest>
