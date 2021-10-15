@@ -14,16 +14,16 @@ cd $HOME/rpcme-iot-riscv-distro
 cd $HOME/rpcme-iot-riscv-distro
 . layers/openembedded-core/oe-init-build-env
 
-bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-openembedded/meta-oe
-bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-openembedded/meta-python
-bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-openembedded/meta-filesystems
-bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-openembedded/meta-networking
-bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-riscv
-bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-sifive
-bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-clang
-bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-swupdate
-bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-aws
-bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-rpcme-iot-distro
+bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/layers/meta-openembedded/meta-oe
+bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/layers/meta-openembedded/meta-python
+bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/layers/meta-openembedded/meta-filesystems
+bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/layers/meta-openembedded/meta-networking
+bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/layers/meta-riscv
+bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/layers/meta-sifive
+bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/layers/meta-clang
+bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/layers/meta-swupdate
+bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/layers/meta-aws
+bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/layers/meta-rpcme-iot-distro
 
 echo "NEXT STEP:"
 echo "$ DISTRO=rpcme-iot-riscv MACHINE=freedom-u540 bitbake riscv-iot-distro"
