@@ -16,6 +16,10 @@
            revision="master"
            name="meta-openembedded"
            path="meta-openembedded" />
+  <project remote="oe"
+           revision="master"
+           name="bitbake"
+           path="bitbake" />
   <project remote="riscv"
            revision="master"
            name="meta-riscv"
