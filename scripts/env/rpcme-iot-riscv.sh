@@ -11,9 +11,21 @@ cd $HOME/rpcme-iot-riscv-distro/layers
 
 cd $HOME/rpcme-iot-riscv-distro
 
-echo next steps:
-echo cd $HOME/rpcme-iot-riscv-distro
-echo . layers/openembedded-core/oe-init-build-env
-echo DISTRO=rpcme-iot-riscv \\
-echo MACHINE=freedom-u540   \\
-echo bitbake riscv-iot-distro
+cd $HOME/rpcme-iot-riscv-distro
+. layers/openembedded-core/oe-init-build-env
+
+bitbake-layers addlayer $HOME/rpcme-iot-riscv-distro/meta-openembedded/meta-oe
+bitbake-layers addlayer $HOME/rpcme-iot-riscv-distro/meta-openembedded/meta-python
+bitbake-layers addlayer $HOME/rpcme-iot-riscv-distro/meta-openembedded/meta-filesystems
+bitbake-layers addlayer $HOME/rpcme-iot-riscv-distro/meta-openembedded/meta-networking
+bitbake-layers addlayer $HOME/rpcme-iot-riscv-distro/meta-riscv
+bitbake-layers addlayer $HOME/rpcme-iot-riscv-distro/meta-sifive
+bitbake-layers addlayer $HOME/rpcme-iot-riscv-distro/meta-clang
+bitbake-layers addlayer $HOME/rpcme-iot-riscv-distro/meta-swupdate
+bitbake-layers addlayer $HOME/rpcme-iot-riscv-distro/meta-aws
+bitbake-layers addlayer $HOME/rpcme-iot-riscv-distro/meta-rpcme-iot-distro
+
+printf "NEXT STEP:\n"
+printf "$ DISTRO=rpcme-iot-riscv   \\\n"
+printf "  MACHINE=freedom-u540     \\\n"
+printf "  bitbake riscv-iot-distro\n"
