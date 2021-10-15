@@ -14,11 +14,11 @@
            name="openembedded-core"
            path="openembedded-core" />
   <project remote="oe"
-           revision="master"
+           revision="f2152d79043601eacb70da1a3ab36f5ac56f3e28"
            name="meta-openembedded"
            path="meta-openembedded" />
   <project remote="oe"
-           revision="master"
+           revision="c78ebac71ec976fdf27ea24767057882870f5c60"
            name="bitbake"
            path="bitbake" />
   <project remote="riscv"
