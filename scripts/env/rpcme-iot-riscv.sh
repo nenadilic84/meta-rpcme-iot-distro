@@ -25,7 +25,5 @@ bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-swupdate
 bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-aws
 bitbake-layers add-layer $HOME/rpcme-iot-riscv-distro/meta-rpcme-iot-distro
 
-printf "NEXT STEP:\n"
-printf "$ DISTRO=rpcme-iot-riscv   \\\n"
-printf "  MACHINE=freedom-u540     \\\n"
-printf "  bitbake riscv-iot-distro\n"
+echo "NEXT STEP:"
+echo "$ DISTRO=rpcme-iot-riscv MACHINE=freedom-u540 bitbake riscv-iot-distro"
