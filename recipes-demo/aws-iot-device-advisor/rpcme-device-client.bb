@@ -18,6 +18,7 @@ do_configure() {
 do_install() {
   install -m 0745 -d ${D}${sysconfdir}/aws-iot-device-client
   install -m 0700 -d ${D}${sysconfdir}/aws-iot-device-client/private
+  install -m 0700 -d ${D}${sysconfdir}/aws-iot-device-client/job-handlers
   install -m 0644 ${WORKDIR}/AmazonRootCA1.pem ${D}${sysconfdir}/aws-iot-device-client/private/root-ca.pem
   install -m 0644 ${WORKDIR}/cert.pem ${D}${sysconfdir}/aws-iot-device-client/private/cert.pem
   install -m 0600 ${WORKDIR}/key.pem ${D}${sysconfdir}/aws-iot-device-client/private/key.pem
