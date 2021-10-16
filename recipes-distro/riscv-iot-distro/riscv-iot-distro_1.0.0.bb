@@ -23,16 +23,20 @@ IMAGE_INSTALL = "\
     packagegroup-core-boot \
     packagegroup-core-full-cmdline \
     chrony \
+    bind-utils \
     i2c-tools \
     i2c-tools-misc \
     networkmanager \
     networkmanager-nmcli \
+    net-tools \
     spitools \
     jq \
     perl-module-locale \
     perl-modules \
     strace \
     rpcme-device-client \
+    dhcpcd \
+    kea \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
