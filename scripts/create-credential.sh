@@ -107,7 +107,7 @@ function get_policy_arn {
 }
 
 function create_policy {
-    sed -e "s/ACCOUNT_ID/${ACCOUNT_ID}/g" ${POLICY_FILE} > /tmp/policy.$$.json
+    sed -e "s/ACCOUNT_ID/${ACCOUNT_ID}/g" -e "s/REGION/${region}/g" ${POLICY_FILE} > /tmp/policy.$$.json
     
     POLICY_ARN=$(aws iot create-policy ${std_awscli_args}                     \
                      --policy-name ${POLICY_NAME}                             \
