@@ -4,7 +4,7 @@
     {
       "Effect": "Allow",
       "Action": "iot:Connect",
-      "Resource": "arn:aws:iot:us-east-1:517295686160:client/${iot:Connection.Thing.ThingName}"
+      "Resource": "arn:aws:iot:REGION::client/${iot:Connection.Thing.ThingName}"
     },
     {
       "Effect": "Allow",
@@ -12,22 +12,22 @@
         "iot:Publish",
         "iot:Receive"
       ],
-      "Resource": "arn:aws:iot:us-east-1:517295686160:topic/$aws/things/${iot:Connection.Thing.ThingName}/*"
+      "Resource": "arn:aws:iot:REGION:ACCOUNT_ID:topic/$aws/things/${iot:Connection.Thing.ThingName}/*"
     },
     {
       "Effect": "Allow",
       "Action": "iot:Subscribe",
-      "Resource": "arn:aws:iot:us-east-1:517295686160:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/*"
+      "Resource": "arn:aws:iot:REGION:ACCOUNT_ID:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/*"
     },
     {
       "Effect": "Allow",
       "Action": "iot:Publish",
-      "Resource": "arn:aws:iot:us-east-1:517295686160:topic/dc-pub-topic"
+      "Resource": "arn:aws:iot:REGION:ACCOUNT_ID:topic/dc-pub-topic"
     },
     {
       "Effect": "Allow",
       "Action": "iot:Subscribe",
-      "Resource": "arn:aws:iot:us-east-1:517295686160:topicfilter/dc-sub-topic"
+      "Resource": "arn:aws:iot:REGION:ACCOUNT_ID:topicfilter/dc-sub-topic"
     }
   ]
 }
