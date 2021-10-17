@@ -16,7 +16,7 @@
     },
     "policy": {
       "Properties": {
-        "PolicyDocument": "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iot:Connect\",\r\n      \"Resource\": \"arn:aws:iot:us-east-1:517295686160:client\/${iot:Connection.Thing.ThingName}\"\r\n    },\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": [\r\n        \"iot:Publish\",\r\n        \"iot:Receive\"\r\n      ],\r\n      \"Resource\": \"arn:aws:iot:us-east-1:517295686160:topic\/$aws\/things\/${iot:Connection.Thing.ThingName}\/*\"\r\n    },\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iot:Subscribe\",\r\n      \"Resource\": \"arn:aws:iot:us-east-1:517295686160:topicfilter\/$aws\/things\/${iot:Connection.Thing.ThingName}\/*\"\r\n    },\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iot:Publish\",\r\n      \"Resource\": \"arn:aws:iot:us-east-1:517295686160:topic\/dc-pub-topic\"\r\n    },\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iot:Subscribe\",\r\n      \"Resource\": \"arn:aws:iot:us-east-1:517295686160:topicfilter\/dc-sub-topic\"\r\n    }\r\n  ]\r\n}\r\n"
+        "PolicyDocument": "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iot:Connect\",\r\n      \"Resource\": \"arn:aws:iot:REGION:ACCOUNT_ID:client\/${iot:Connection.Thing.ThingName}\"\r\n    },\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": [\r\n        \"iot:Publish\",\r\n        \"iot:Receive\"\r\n      ],\r\n      \"Resource\": \"arn:aws:iot:REGION:ACCOUNT_ID:topic\/$aws\/things\/${iot:Connection.Thing.ThingName}\/*\"\r\n    },\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iot:Subscribe\",\r\n      \"Resource\": \"arn:aws:iot:REGION:ACCOUNT_ID:topicfilter\/$aws\/things\/${iot:Connection.Thing.ThingName}\/*\"\r\n    },\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iot:Publish\",\r\n      \"Resource\": \"arn:aws:iot:REGION:ACCOUNT_ID:topic\/dc-pub-topic\"\r\n    },\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iot:Subscribe\",\r\n      \"Resource\": \"arn:aws:iot:REGION:ACCOUNT_ID:topicfilter\/dc-sub-topic\"\r\n    }\r\n  ]\r\n}\r\n"
       },
       "Type": "AWS::IoT::Policy"
     },
@@ -27,9 +27,14 @@
         "ThingTypeName": "REPLACE"
       },
       "Properties": {
-        "AttributePayload": {},
+        "AttributePayload": {
+          "machine" : "freedom-u540",
+          "distro_name" : "rpcme-iot",
+          "distro_version" : "1.0.0",
+          "distro_codename" : "Viscous"
+        },
         "ThingGroups": [
-          "dev1"
+          "NewfangledRiscVDevices"
         ],
         "ThingName": {
           "Fn::Join": [
@@ -42,7 +47,7 @@
             ]
           ]
         },
-        "ThingTypeName": "dev1"
+        "ThingTypeName": "RiscvDevice"
       },
       "Type": "AWS::IoT::Thing"
     }
