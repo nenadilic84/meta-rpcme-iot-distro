@@ -45,3 +45,5 @@ IMAGE_INSTALL:append:unmatched = " \
     unmatched-udev-rules \
     unmatched-systemd-units \
     "
+
+#inherit swupdate
