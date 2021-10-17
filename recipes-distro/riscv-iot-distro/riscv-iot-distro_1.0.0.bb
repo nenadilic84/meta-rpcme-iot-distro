@@ -26,8 +26,6 @@ IMAGE_INSTALL = "\
     bind-utils \
     i2c-tools \
     i2c-tools-misc \
-    networkmanager \
-    networkmanager-nmcli \
     net-tools \
     spitools \
     jq \
@@ -36,7 +34,6 @@ IMAGE_INSTALL = "\
     strace \
     rpcme-device-client \
     dhcpcd \
-    kea \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
@@ -48,4 +45,3 @@ IMAGE_INSTALL:append:unmatched = " \
     unmatched-udev-rules \
     unmatched-systemd-units \
     "
-
