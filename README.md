@@ -15,23 +15,30 @@ of cores that runs Linux effectively.
 
 **KNOW THIS BEFORE YOU DO ANYTHING**
 
-Setup the cloud-side prior to building and running the image. The
+- Setup the cloud-side prior to building and running the image. The
 demonstration will fail without cloud-side provisioning.
-
+- It is expected that you have AWS CLI installed and configured for
+  the target region where you want to operate.
 
 #### Cloud configuration
 
 Setup fleet provisioning to prepare for device first boot provisioning.
 
-1. 
+Please look at the scripts to understand the options.  The usage of
+the script in step 3 is a bit rough at this point.
+
+1. Create a fleet provisioning role as defined here. You will need
+   this role ARN for step 3.
+   1. Navigate to
+      https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html
+   2. Create role as defined in step 4, in section **Provisioning by
+      claim**.  I hope to have a script to do this for you soon.
+2. Generate credentials with `scripts/create-credential.sh` using the
+   policy at `scripts/fleet-provisioning/fp-policy.json`.
+3. Create the fleet provisioning template using the script
+   `scripts/fleet-provisioning/setup.sh`.
 
 #### Device image
-
-aws --profile work --region us-east-1 iot describe-endpoint
-
-set in local.conf
-
-`DEMO_IOT_ENDPOINT = "audqth7zumq6e.iot.us-east-1.amazonaws.com"`
 
 
 Initialize the environment.
@@ -40,6 +47,19 @@ Initialize the environment.
 curl
 https://raw.githubusercontent.com/rpcme/meta-rpcme-iot-distro/main/scripts/env/rpcme-iot-riscv.sh | \
   bash
+```
+
+Set in local.conf
+
+```text
+DEMO_IOT_ENDPOINT = "<ENDPOINT>"`
+```
+
+Where `<ENDPOINT>` is the value output from the following:
+
+
+```bash
+aws --output text --query endpointAddress iot describe-endpoint --endpoint-type iot:data-ats
 ```
 
 Initialize the environment.
