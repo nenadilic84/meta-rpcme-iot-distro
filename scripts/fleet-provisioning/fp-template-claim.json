@@ -29,12 +29,13 @@
       "Properties": {
         "AttributePayload": {
           "machine" : "freedom-u540",
+          "machine_rev" : "A",
           "distro_name" : "rpcme-iot",
           "distro_version" : "1.0.0",
           "distro_codename" : "Viscous"
         },
         "ThingGroups": [
-          "NewfangledRiscVDevices"
+          "ConsumerGateway"
         ],
         "ThingName": {
           "Fn::Join": [
@@ -47,7 +48,7 @@
             ]
           ]
         },
-        "ThingTypeName": "RiscvDevice"
+        "ThingTypeName": "freedom-u540"
       },
       "Type": "AWS::IoT::Thing"
     }
