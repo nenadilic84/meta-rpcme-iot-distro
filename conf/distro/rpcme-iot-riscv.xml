@@ -6,7 +6,7 @@
   <remote name="sifive" fetch="git://github.com/sifive" />
   <remote name="clang" fetch="git://github.com/kraj" />
   <remote name="swupdate" fetch="git://github.com/sbabic" />
-  <remote name="aws" fetch="git://github.com/aws" />
+  <remote name="aws" fetch="git://github.com/aws4embeddedlinux" />
   <remote name="rpcme" fetch="git://github.com/rpcme" />
   
   <project remote="oe"
@@ -22,7 +22,7 @@
            name="bitbake"
            path="bitbake" />
   <project remote="riscv"
-           revision="master"
+           revision="47faa008327abc388c52246b24a8a458b30b6f0d"
            name="meta-riscv"
            path="meta-riscv" />
   <project remote="sifive"
@@ -30,15 +30,15 @@
            name="meta-sifive"
            path="meta-sifive" />
   <project remote="clang"
-           revision="master"
+           revision="826f7287ffb8ae87bd843ecfe4a21a661bb03294"
            name="meta-clang"
            path="meta-clang" />
   <project remote="swupdate"
-           revision="master"
+           revision="82882e99029e90e4246a05b11150c0b13b7e3121"
            name="meta-swupdate"
            path="meta-swupdate" />
   <project remote="aws"
-           revision="master"
+           revision="honister"
            name="meta-aws"
            path="meta-aws" />
   <project remote="rpcme"
