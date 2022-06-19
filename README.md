@@ -8,7 +8,7 @@ rounded baseline.
 
 ### riscv-iot-distro
 
-**riskv-iot-distro** is an AWS IoT Device Client demonstration running
+**riscv-iot-distro** is an AWS IoT Device Client demonstration running
 on the freedom-u540 (Unleashed) board.  Yes, I know this board is
 deprecated, but it is still incredibly useful given it is a strong set
 of cores that runs Linux effectively.
@@ -33,10 +33,28 @@ the script in step 3 is a bit rough at this point.
       https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html
    2. Create role as defined in step 4, in section **Provisioning by
       claim**.  I hope to have a script to do this for you soon.
+
+   Or use the aws-cli
+   ```
+   aws iam create-role --role-name IoTProvisioningRole --assume-role-policy-document "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":[\"iot.amazonaws.com\"]},\"Action\":[\"sts:AssumeRole\"]}]}"
+
+   aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/service-role/AWSIoTThingsRegistration --role-name IoTProvisioningRole
+   ```
+
 2. Generate credentials with `scripts/create-credential.sh` using the
    policy at `scripts/fleet-provisioning/fp-policy.json`.
-3. Create the fleet provisioning template using the script
-   `scripts/fleet-provisioning/setup.sh`.
+   ```
+   cd scripts
+   ./create-credential.sh -t "ew22-demo" -n "fp-plicy" -f "fleet-provisioning/fp-policy.json" -F
+   mv ../../volatile/ew22-demo/ew22-demo.crt.pem ../recipes-demo/aws-iot-device-advisor/files/cert.pem 
+   mv ../../volatile/ew22-demo/ew22-demo.key.prv.pem ../recipes-demo/aws-iot-device-advisor/files/key.pem 
+   ```
+
+3. Create the fleet provisioning template using the script `scripts/fleet-provisioning/setup.sh`.
+   ```
+   cd fleet-provisioning
+   ./setup.sh arn:aws:iam::<your account>:role/IoTProvisioningRole
+   ```
 
 #### Device image
 
@@ -53,6 +71,7 @@ Set in local.conf
 
 ```text
 DEMO_IOT_ENDPOINT = "<ENDPOINT>"`
+DEMO_THING_NAME="<thing name used for provisioning>"
 ```
 
 Where `<ENDPOINT>` is the value output from the following:
@@ -70,6 +89,12 @@ cd $HOME/rpcme-iot-riscv-distro
 DISTRO=rpcme-iot-riscv MACHINE=freedom-u540 bitbake riscv-iot-distro
 ```
 
+In case you are building this on and EC2 you can send it to s3 for download 
+
+```
+aws s3 cp $BBPATH/tmp-glibc/deploy/images/freedom-u540/riscv-iot-distro-freedom-u540.wic.xz s3://ew22-demo-nenadilic84/riscv-iot-distro-freedom-u540-fp.wic.xz
+```
+
 Write the image to flash.
 
 ```bash
@@ -79,3 +104,27 @@ xzcat ${wic} | sudo dd of=/dev/sda \
                        bs=512K iflag=fullblock oflag=direct \
                        conv=fsync status=progress
 ```
+or in case this is done on a MAC OS
+
+```
+xzcat riscv-iot-distro-freedom-u540-fp.wic.xz | sudo gdd of=/dev/diskX bs=512K iflag=fullblock  conv=fsync status=progress
+```
+
+Login is **root**, Password is **sifive**
+
+# AWS IoT Jobs
+
+Create an AWS IoT Job that will give back information about the system by running a `uname -a` command:
+
+```
+
+aws iot create-job --job-id boad_info --document "{\"operation\": \"uname\", \"args\": [\"-a\"], \"includeStdOut\": true}" --targets arn:aws:iot:<region>:<account>:thing/<thing name>
+            
+```
+
+Describe job execution:
+
+```
+aws iot describe-job-execution --job-id boad_info7 --thing-name riscv_demo_4be3cd672807c63e6dcd158be10600c7cb897e1f97d82f9d692700962c64d619
+```
+
