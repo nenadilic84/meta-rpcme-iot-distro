@@ -63,7 +63,7 @@ Initialize the environment.
 
 ```bash
 curl
-https://raw.githubusercontent.com/rpcme/meta-rpcme-iot-distro/main/scripts/env/rpcme-iot-riscv.sh | \
+https://raw.githubusercontent.com/nenadilic84/meta-rpcme-iot-distro/main/scripts/env/rpcme-iot-riscv.sh | \
   bash
 ```
 
@@ -89,13 +89,13 @@ cd $HOME/rpcme-iot-riscv-distro
 DISTRO=rpcme-iot-riscv MACHINE=freedom-u540 bitbake riscv-iot-distro
 ```
 
-In case you are building this on and EC2 you can send it to s3 for download 
+In case you are building this on an EC2 you can send it to s3 and download it on a PC from there.
 
 ```
-aws s3 cp $BBPATH/tmp-glibc/deploy/images/freedom-u540/riscv-iot-distro-freedom-u540.wic.xz s3://ew22-demo-nenadilic84/riscv-iot-distro-freedom-u540-fp.wic.xz
+aws s3 cp $BBPATH/tmp-glibc/deploy/images/freedom-u540/riscv-iot-distro-freedom-u540.wic.xz s3://<yocto image bucket>/riscv-iot-distro-freedom-u540-fp.wic.xz
 ```
 
-Write the image to flash.
+Write the image to sd card.
 
 ```bash
 wic=$BBPATH/tmp-glibc/deploy/images/freedom-u540/riscv-iot-distro-freedom-u540.wic.xz
@@ -125,6 +125,6 @@ aws iot create-job --job-id boad_info --document "{\"operation\": \"uname\", \"a
 Describe job execution:
 
 ```
-aws iot describe-job-execution --job-id boad_info7 --thing-name riscv_demo_4be3cd672807c63e6dcd158be10600c7cb897e1f97d82f9d692700962c64d619
+aws iot describe-job-execution --job-id boad_info7 --thing-name <thing name>
 ```
 

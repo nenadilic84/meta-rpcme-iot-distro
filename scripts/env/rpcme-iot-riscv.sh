@@ -4,7 +4,7 @@ chmod +x /tmp/repo
 mkdir -p $HOME/rpcme-iot-riscv-distro/layers
 cd $HOME/rpcme-iot-riscv-distro/layers
 /tmp/repo init \
-          -u https://github.com/rpcme/meta-rpcme-iot-distro \
+          -u https://github.com/nenadilic84/meta-rpcme-iot-distro \
           -m conf/distro/rpcme-iot-riscv.xml
 
 /tmp/repo sync
