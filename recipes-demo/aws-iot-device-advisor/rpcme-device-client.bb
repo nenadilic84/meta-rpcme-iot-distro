@@ -13,6 +13,8 @@ SRC_URI = "https://www.amazontrust.com/repository/AmazonRootCA1.pem \
 SRC_URI[sha256sum] = "2c43952ee9e000ff2acc4e2ed0897c0a72ad5fa72c3d934e81741cbd54f05bd1"
 do_configure() {
   sed -i -e "s,replace_with_endpoint_value,${DEMO_IOT_ENDPOINT}," ${WORKDIR}/aws-iot-device-client.conf
+  sed -i -e "s,replace_with_thing_name_value,${DEMO_THING_NAME}," ${WORKDIR}/aws-iot-device-client.conf
+  
 }
 
 do_install() {
