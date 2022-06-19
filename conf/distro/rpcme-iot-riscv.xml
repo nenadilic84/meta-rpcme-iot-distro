@@ -7,7 +7,7 @@
   <remote name="clang" fetch="git://github.com/kraj" />
   <remote name="swupdate" fetch="git://github.com/sbabic" />
   <remote name="aws" fetch="git://github.com/aws4embeddedlinux" />
-  <remote name="rpcme" fetch="git://github.com/rpcme" />
+  <remote name="rpcme" fetch="git://github.com/nenadilic84" />
   
   <project remote="oe"
            revision="e72c0b94554a9bc293844ec2bddb0c04ea19791d"
