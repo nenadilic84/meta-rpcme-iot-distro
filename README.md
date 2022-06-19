@@ -118,13 +118,13 @@ Create an AWS IoT Job that will give back information about the system by runnin
 
 ```
 
-aws iot create-job --job-id boad_info --document "{\"operation\": \"uname\", \"args\": [\"-a\"], \"includeStdOut\": true}" --targets arn:aws:iot:<region>:<account>:thing/<thing name>
+aws iot create-job --job-id board_info --document "{\"operation\": \"uname\", \"args\": [\"-a\"], \"includeStdOut\": true}" --targets arn:aws:iot:<region>:<account>:thing/<thing name>
             
 ```
 
 Describe job execution:
 
 ```
-aws iot describe-job-execution --job-id boad_info7 --thing-name <thing name>
+aws iot describe-job-execution --job-id board_info --thing-name <thing name>
 ```
 
